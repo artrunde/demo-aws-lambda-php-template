@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 sudo su
 yum install -y libexif-devel libjpeg-devel gd-devel curl-devel openssl-devel libxml2-devel gcc
 cd /tmp
