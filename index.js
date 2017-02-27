@@ -4,7 +4,7 @@ var spawn = require('child_process').spawn;
 
 exports.handler = function(event, context) {
 
-  var php = spawn('./php-cgi', ['-v']);
+  var php = spawn('./bin/php-cgi', ['-v']);
 
   var output = '';
 
