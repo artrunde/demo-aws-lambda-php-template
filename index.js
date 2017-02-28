@@ -1,31 +1,44 @@
-process.env['PATH'] = process.env['PATH'] + ':' + process.env['LAMBDA_TASK_ROOT'];
+'use strict';
 
-var spawn   = require('child_process').spawn;
+console.log('Loading hello world php function');
+
+var spawn = require('child_process').spawn;
 
 exports.handler = function(event, context) {
 
-  var php = spawn('./bin/php',['index.php']);
-  var output = "";
+  var name = "World";
+  var responseCode = 200;
+  var PHPOutput = '';
 
-  //send the input event json as string via STDIN to php process
-  php.stdin.write(JSON.stringify(event));
+  console.log("request: " + JSON.stringify(event));
 
-  //close the php stream to unblock php process
-  php.stdin.end();
+  var php = spawn('./bin/php-cgi', ['-v']);
 
-  //dynamically collect php output
   php.stdout.on('data', function(data) {
-    output+=data;
+    PHPOutput += data.toString('utf-8');
   });
 
-  //react to potential errors
-  php.stderr.on('data', function(data) {
-    console.log("STDERR: "+data);
+  php.on('close', function() {
+
+    var responseBody = {
+      message: "Hello " + name + "!",
+      php: PHPOutput,
+      input: event
+    };
+
+    var response = {
+      statusCode: responseCode,
+      headers: {
+        "x-custom-header" : "my custom header value"
+      },
+      body: JSON.stringify(responseBody)
+    };
+
+    console.log("response: " + JSON.stringify(response))
+    context.succeed(response);
+
   });
 
-  //finalize when php process is done.
-  php.on('close', function(code) {
-    context.succeed(JSON.parse(output));
-  });
+
 
 };
