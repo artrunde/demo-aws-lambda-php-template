@@ -2,12 +2,11 @@
 
 console.log('Loading hello world php function');
 
-var spawn = require('child_process').spawn;
+var spawn   = require('child_process').spawn;
+var parser  = require('http-string-parser');
 
 exports.handler = function(event, context) {
 
-  var name = "World";
-  var responseCode = 200;
   var PHPOutput = '';
 
   console.log("request: " + JSON.stringify(event));
@@ -32,9 +31,14 @@ exports.handler = function(event, context) {
     })
   });
 
-  //send the input event json as string via STDIN to php process
-  php.stdin.write(event.body);
-  php.stdin.end(); // Close the php stream to unblock php process
+  if (event.body !== null && event.body !== undefined) {
+    //send the input event json as string via STDIN to php process
+    php.stdin.write(event.body);
+    php.stdin.end(); // Close the php stream to unblock php process
+  } else {
+    php.stdin.write('');
+    php.stdin.end(); // Close the php stream to unblock php process
+  }
 
   php.stdout.on('data', function(data) {
     PHPOutput += data.toString('utf-8');
@@ -42,25 +46,18 @@ exports.handler = function(event, context) {
 
   php.on('close', function() {
 
-    var responseBody = {
-      message: "Hello " + name + "!",
-      php: PHPOutput,
-      input: event
-    };
+    // Parses a raw HTTP response into an object that we can manipulate into the required format.
+    var parsedPHPOutput   = parser.parseResponse(PHPOutput);
 
     var response = {
-      statusCode: responseCode,
-      headers: {
-        "x-custom-header" : "my custom header value"
-      },
-      body: JSON.stringify(responseBody)
+      statusCode: parsedPHPOutput.statusCode || 200,
+      headers: parsedPHPOutput.headers,
+      body: parsedPHPOutput.body
     };
 
     console.log("response: " + JSON.stringify(response))
     context.succeed(response);
 
   });
-
-
 
 };
