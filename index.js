@@ -47,7 +47,7 @@ exports.handler = function(event, context) {
   php.on('close', function() {
 
     // Parses a raw HTTP response into an object that we can manipulate into the required format.
-    var parsedPHPOutput   = parser.parseResponse(PHPOutput);
+    var parsedPHPOutput = parser.parseResponse(PHPOutput);
 
     var response = {
       statusCode: parsedPHPOutput.statusCode || 200,
