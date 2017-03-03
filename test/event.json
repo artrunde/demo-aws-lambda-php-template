@@ -1,6 +1,6 @@
 {
-    "resource": "/say/welcome/{proxy+}",
-    "path": "/say/welcome/kalle",
+    "resource": "/test/subscribers/{proxy+}",
+    "path": "/test/subscribers",
     "httpMethod": "GET",
     "headers": {
         "Accept": "*/*",
@@ -50,7 +50,7 @@
             "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
             "user": null
         },
-        "resourcePath": "/say/welcome/{proxy+}",
+        "resourcePath": "/subscribers/{proxy+}",
         "httpMethod": "GET",
         "apiId": "ajxruqiu0f"
     },

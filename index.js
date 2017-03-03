@@ -27,16 +27,20 @@ exports.handler = function(event, context) {
   }
 
   // Spawn the PHP CGI process with a bunch of environment variables that describe the request.
-  var php = spawn('./bin/php-cgi', ['-dextension=bin/phalcon.so','app/index.php'], {
+  var php = spawn('./bin/php-cgi', ['-dextension=bin/phalcon.so','src/public/index.php'], {
     env: Object.assign({
       REDIRECT_STATUS: 200,
       REQUEST_METHOD: requestMethod,
-      SCRIPT_FILENAME: 'app/index.php',
-      SCRIPT_NAME: '/app/index.php',
+      SCRIPT_FILENAME: 'src/public/index.php',
+      SCRIPT_NAME: '/src/public/index.php',
       PATH_INFO: '/',
       SERVER_NAME: serverName,
       SERVER_PROTOCOL: 'HTTP/1.1',
       REQUEST_URI: requestUri,
+      AWS_REGION: process.env.AWS_REGION,
+      AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+      AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+      AWS_SESSION_TOKEN: process.env.AWS_SESSION_TOKEN,
       EVENT_PARAMS: JSON.stringify(event)
     }, headers)
   });
