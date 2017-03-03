@@ -57,6 +57,15 @@ class Application extends BaseApplication
 				]
 			);
 
+			// Define a route
+			$router->addGet(
+				"/debug/",
+				[
+					"controller" => "index",
+					"action"     => "debug",
+				]
+			);
+
 			$router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
 
 			return $router;
