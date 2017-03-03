@@ -27,11 +27,11 @@ class Application extends BaseApplication
             ]
         );
 
-		/*$loader->registerFiles(
+		$loader->registerFiles(
 			[
 				'../../vendor/autoload.php',
 			]
-		);*/
+		);
 
         $loader->register();
     }
@@ -50,7 +50,7 @@ class Application extends BaseApplication
 
 			// Define a route
 			$router->addGet(
-				"subscribers/",
+				"/subscribers/",
 				[
 					"controller" => "subscribers",
 					"action"     => "index",
