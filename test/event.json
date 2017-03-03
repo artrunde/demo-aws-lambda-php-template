@@ -1,7 +1,7 @@
 {
-    "resource": "/foo/{proxy+}",
-    "path": "/foo/hans",
-    "httpMethod": "POST",
+    "resource": "/say/welcome/{proxy+}",
+    "path": "/say/welcome/kalle",
+    "httpMethod": "GET",
     "headers": {
         "Accept": "*/*",
         "Accept-Encoding": "gzip, deflate, br",
@@ -25,9 +25,7 @@
         "X-Forwarded-Port": "443",
         "X-Forwarded-Proto": "https"
     },
-    "queryStringParameters": {
-        "name": "hest",
-        "chano": "mon"
+    "queryStringParameters": {     
     },
     "pathParameters": {
         "proxy": "hans"
@@ -52,10 +50,10 @@
             "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
             "user": null
         },
-        "resourcePath": "/foo/{proxy+}",
-        "httpMethod": "POST",
+        "resourcePath": "/say/welcome/{proxy+}",
+        "httpMethod": "GET",
         "apiId": "ajxruqiu0f"
     },
-    "body": "{\"emailaddress\":\"evercall@svarikke.dk\",\"settings\":{\"sip\":{\"password\":\"eAQ3r8HF\",\"ring_timer\":\"45000\",\"try_timer\":\"25000\",\"bitrate\":\"high\",\"port\":5060,\"transport\":\"tcp\"}}}",
+    "body": "hans",
     "isBase64Encoded": false
 }

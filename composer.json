@@ -1,0 +1,13 @@
+{
+    "name": "artrunde/demo-aws-lambda-php-template",
+    "description": "AWS Lambda with PHP 7.1 support",
+    "authors": [
+        {
+            "name": "Karsten Jakobsen",
+            "email": "kj@evercall.dk"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.23"
+    }
+}
