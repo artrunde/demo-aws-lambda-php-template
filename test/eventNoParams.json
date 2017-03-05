@@ -25,10 +25,7 @@
         "X-Forwarded-Port": "443",
         "X-Forwarded-Proto": "https"
     },    
-    "queryStringParameters": {     
-      "thisis": "dog",
-      "yes": "1"
-    },
+    "queryStringParameters": null,
     "pathParameters": {
         "proxy": "hans"
     },
