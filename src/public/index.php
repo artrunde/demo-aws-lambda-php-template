@@ -23,7 +23,8 @@ class Application extends BaseApplication
         $loader->registerNamespaces(
             [
                 'DemoAWS\Controllers' => '../apps/controllers/',
-                'DemoAWS\Models'      => '../apps/models/'
+                'DemoAWS\Models'      => '../apps/models/',
+				'DemoAWS\Library'     => '../apps/library/'
             ]
         );
 
@@ -66,6 +67,15 @@ class Application extends BaseApplication
 				]
 			);
 
+			// Define a route
+			$router->addGet(
+				"/users/{id}",
+				[
+					"controller" => "subscribers",
+					"action"     => "get",
+				]
+			);
+
 			$router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
 
 			return $router;
@@ -100,7 +110,7 @@ class Application extends BaseApplication
 		 * Services can be registered as "shared" services this means that they always will act as singletons. Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 		 */
 		$di->setShared(
-			"db",
+			"dynamoDBClient",
 			function () {
 				return new DynamoDbClient([
 					'version'  => 'latest',
@@ -128,6 +138,7 @@ class Application extends BaseApplication
 
     public function main()
     {
+
         $this->registerServices();
 		$this->registerAutoloaders();
 		$this->registerRoutes();

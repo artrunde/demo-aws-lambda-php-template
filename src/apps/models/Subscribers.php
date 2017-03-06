@@ -7,14 +7,14 @@ use Phalcon\Mvc\User\Component;
 
 /**
  * Class Products
- * @property DynamoDbClient $db
+ * @property DynamoDbClient $dynamoDBClient
  */
 class Subscribers extends Component
 {
 
     public function getAll()
     {
-		$response = $this->db->scan([
+		$response = $this->dynamoDBClient->scan([
 			'TableName' => 'subscribers'
 		]);
 

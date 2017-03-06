@@ -1,0 +1,61 @@
+{
+    "resource": "/users/{proxy+}",
+    "path": "/users/1",
+    "httpMethod": "GET",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "da-DK,da;q=0.8,en-US;q=0.6,en;q=0.4,nb;q=0.2",
+        "cache-control": "no-cache",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "DK",
+        "content-type": "application/json",
+        "Host": "ajxruqiu0f.execute-api.eu-west-1.amazonaws.com",
+        "origin": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+        "postman-token": "76de5475-19d2-742e-82d2-c7986f38c1fe",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+        "Via": "2.0 81c085110a4ab1cc157a3023ea302f38.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "vpK-erPDMOeepGA4-XqFd-jc9wFiDA8tIpDGaLqDCRYrrhKYgrozQQ==",
+        "X-Amzn-Trace-Id": "Root=1-58b58bab-3abd757e33792a3a2d15bf66",
+        "X-Forwarded-For": "185.31.176.89, 54.182.191.83",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },    
+    "queryStringParameters": {     
+      "thisis": "dog",
+      "yes": "1"
+    },
+    "pathParameters": {
+        "proxy": "hans"
+    },
+    "stageVariables": null,
+    "requestContext": {
+        "accountId": "401237329133",
+        "resourceId": "4ibh3v",
+        "stage": "v1",
+        "requestId": "bc0087bd-fdc3-11e6-9b22-0f2968bf9ff0",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "apiKey": null,
+            "sourceIp": "185.31.176.89",
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+            "user": null
+        },
+        "resourcePath": "/users/{proxy+}",
+        "httpMethod": "GET",
+        "apiId": "ajxruqiu0f"
+    },
+    "body": null,
+    "isBase64Encoded": false
+}

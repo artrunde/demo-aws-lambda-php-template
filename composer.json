@@ -1,6 +1,5 @@
 {
     "require": {
-        "aws/aws-sdk-php": "^3.23",
-        "oasis/dynamodb-odm": "^0.4.11"
+        "aws/aws-sdk-php": "^3.23"
     }
 }
