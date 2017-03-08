@@ -2,9 +2,9 @@
 
 namespace DemoAWS\Models;
 
-use DemoAWS\Library\DynamoDBORM;
+use DemoAWS\Library\ODM;
 
-class Users extends DynamoDBORM {
+class Users extends ODM {
 
 	public $user_id;
 
@@ -22,6 +22,7 @@ class Users extends DynamoDBORM {
 		'user_id'    => 'N',  // user_id is number
 		'name'       => 'S',  // name is string
 		'age'        => 'N',
-		'country'    => 'S',
+		'country'    => 'S'
 	);
+
 }

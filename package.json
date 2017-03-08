@@ -1,0 +1,28 @@
+{
+  "name": "demo-aws-lambda-php-template",
+  "version": "1.0.0",
+  "description": "Testing PHP and Lambda",
+  "main": "dynamodb-localhost.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "http-string-parser": "^0.0.5"
+  },
+  "devDependencies": {
+    "dynamodb-local": "0.0.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artrunde/demo-aws-lambda-php-template.git"
+  },
+  "author": "Karsten Jakobsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artrunde/demo-aws-lambda-php-template/issues"
+  },
+  "homepage": "https://github.com/artrunde/demo-aws-lambda-php-template#readme"
+}

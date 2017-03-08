@@ -3,13 +3,13 @@
 namespace DemoAWS;
 
 use Aws\DynamoDb\DynamoDbClient;
+use DemoAWS\Request\LambdaRequest;
 use Phalcon\DI;
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\Response;
-use Phalcon\Http\Request;
 use Phalcon\Mvc\Model\Manager as ModelsManager;
 use Phalcon\Mvc\Application as BaseApplication;
 use Phalcon\Mvc\Model\Metadata\Memory as MemoryMetaData;
@@ -24,7 +24,8 @@ class Application extends BaseApplication
             [
                 'DemoAWS\Controllers' => '../apps/controllers/',
                 'DemoAWS\Models'      => '../apps/models/',
-				'DemoAWS\Library'     => '../apps/library/'
+				'DemoAWS\Library'     => '../apps/library/',
+                'DemoAWS\Request'     => '../apps/request/'
             ]
         );
 
@@ -68,11 +69,74 @@ class Application extends BaseApplication
 			);
 
 			// Define a route
-			$router->addGet(
-				"/users/{id}",
+			$router->addPost(
+				"/debug/",
 				[
-					"controller" => "subscribers",
-					"action"     => "get",
+					"controller" => "index",
+					"action"     => "debug",
+				]
+			);
+
+			// Define a route
+			$router->addPut(
+				"/debug/",
+				[
+					"controller" => "index",
+					"action"     => "debug",
+				]
+			);
+
+			// Define a route
+			$router->addGet(
+				"/users/{id:[0-9]+}",
+				[
+					"controller" => "users",
+					"action"     => "findOne",
+				]
+			);
+
+            // Define a route
+            $router->addDelete(
+                "/users/{id:[0-9]+}",
+                [
+                    "controller" => "users",
+                    "action"     => "delete",
+                ]
+            );
+
+			// Define a route
+			$router->addGet(
+				"/users/",
+				[
+					"controller" => "users",
+					"action"     => "findAll",
+				]
+			);
+
+			// Define a route
+			$router->addGet(
+				"/users/search/{user_id:[0-9]+}",
+				[
+					"controller" => "users",
+					"action"     => "search",
+				]
+			);
+
+			// Define a route
+			$router->addPut(
+				"/users/{user_id:[0-9]+}",
+				[
+					"controller" => "users",
+					"action"     => "update",
+				]
+			);
+
+			// Define a route
+			$router->addPost(
+				"/users/",
+				[
+					"controller" => "users",
+					"action"     => "create",
 				]
 			);
 
@@ -96,7 +160,7 @@ class Application extends BaseApplication
 
         // Registering a Http\Request
         $di->set('request', function () {
-            return new Request();
+            return new LambdaRequest();
         });
 
         // Registering the view component

@@ -58,10 +58,12 @@ exports.handler = function(event, context) {
     });
 
     if (event.body !== null && event.body !== undefined) {
+        console.log("Body: " + JSON.stringify(event.body) );
         //send the input event json as string via STDIN to php process
         php.stdin.write(event.body);
         php.stdin.end(); // Close the php stream to unblock php process
     } else {
+        console.log("Empty body");
         php.stdin.write('');
         php.stdin.end(); // Close the php stream to unblock php process
     }
